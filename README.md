@@ -1,7 +1,14 @@
-# disable-keybindings package
+# Pulsar disable-keybindings package
 
-Disables keybindings
-[![Build Status](https://travis-ci.org/aki77/atom-disable-keybindings.svg)](https://travis-ci.org/aki77/atom-disable-keybindings)
+<p>
+<a href="https://github.com/tom-power/pulsar-disable-keybindings/actions/workflows/main.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/tom-power/pulsar-disable-keybindings/main.yml?style=flat-square&logo=github&label=CI%20status" alt="actions status">
+  </a>
+</p>
+
+Package for disabling bundled and community package keybindings in Pulsar.
+
+Continuation of archived [atom-disable-keybindings](https://github.com/aki77).
 
 ## Settings
 
@@ -13,7 +20,7 @@ Disables keybindings
 - `exceptCommunityPackages` (default: [])
 - `PrefixKeys` (default: [])
 
-[![Gyazo](http://i.gyazo.com/18a6d9f4ffb4371b947e22e9977bbe5a.png)](http://gyazo.com/18a6d9f4ffb4371b947e22e9977bbe5a)
+![settings](https://cdn.statically.io/gh/tom-power/pulsar-disable-keybindings/main/assets/settings.png)
 
 ## Commands
 

@@ -2,16 +2,27 @@
   "name": "disable-keybindings",
   "main": "./lib/main",
   "version": "0.6.0",
-  "description": "Disables keybindings",
+  "description": "Disable keybindings in Pulsar",
   "keywords": [
     "keybindings"
   ],
-  "repository": "https://github.com/aki77/atom-disable-keybindings",
+  "repository": "https://github.com/tom-power/pulsar-disable-keybindings",
   "license": "MIT",
   "engines": {
-    "atom": ">=0.174.0 <2.0.0"
+    "pulsar": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "underscore-plus": "^1.6.0"
+  },
+  "scripts": {
+    "eslint": "eslint . --ext .json,.js",
+    "lint": "npm run eslint",
+    "lintfix": "npm run eslint -- --fix",
+    "test-editor": "pulsar --test spec",
+    "test": "npm run test-editor && npm run lint"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-plugin-json": "^3.1.0"
   }
 }
