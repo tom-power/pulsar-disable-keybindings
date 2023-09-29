@@ -59,6 +59,7 @@ describe("DisableKeybindings", function () {
         bracketMatcherbindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'bracket-matcher'));
         expect(goToLinebindings.length).toBe(0);
         expect(bracketMatcherbindings.length).toBeGreaterThan(0);
+        expect(atom.config.get('core.packagesWithKeymapsDisabled')).toEqual(['go-to-line']);
       });
     });
 
@@ -77,6 +78,7 @@ describe("DisableKeybindings", function () {
         bracketMatcherbindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'bracket-matcher'));
         expect(goToLinebindings.length).toBe(0);
         expect(bracketMatcherbindings.length).toBe(0);
+        expect(atom.config.get('core.packagesWithKeymapsDisabled')).toEqual(['bracket-matcher', 'go-to-line']);
       });
     });
 
@@ -96,6 +98,7 @@ describe("DisableKeybindings", function () {
         bracketMatcherbindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'bracket-matcher'));
         expect(goToLinebindings.length).toBe(0);
         expect(bracketMatcherbindings.length).toBeGreaterThan(0);
+        expect(atom.config.get('core.packagesWithKeymapsDisabled')).toEqual(['go-to-line']);
       });
     });
 
@@ -114,6 +117,7 @@ describe("DisableKeybindings", function () {
         package2Bindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'package-with-keymaps2'));
         expect(package1Bindings.length).toBe(0);
         expect(package2Bindings.length).toBeGreaterThan(0);
+        expect(atom.config.get('core.packagesWithKeymapsDisabled')).toEqual(['package-with-keymaps1']);
       });
     });
 
@@ -132,6 +136,7 @@ describe("DisableKeybindings", function () {
         package2Bindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'package-with-keymaps2'));
         expect(package1Bindings.length).toBe(0);
         expect(package2Bindings.length).toBe(0);
+        expect(atom.config.get('core.packagesWithKeymapsDisabled')).toEqual(['disable-keybindings', 'package-with-keymaps1', 'package-with-keymaps2']);
       });
     });
 
@@ -151,6 +156,7 @@ describe("DisableKeybindings", function () {
         package2Bindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'package-with-keymaps2'));
         expect(package1Bindings.length).toBe(0);
         expect(package2Bindings.length).toBeGreaterThan(0);
+        expect(atom.config.get('core.packagesWithKeymapsDisabled')).toEqual(['disable-keybindings', 'package-with-keymaps1']);
       });
     });
 
