@@ -43,6 +43,34 @@ describe("DisableKeybindings", function () {
     return runs(() => atom.packages.loadPackage('go-to-line').activateResources());
   });
 
+  describe("reload", function () {
+    it("bundledPackages", function () {
+      let goToLinebindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'go-to-line'));
+      let bracketMatcherbindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'bracket-matcher'));
+      expect(goToLinebindings.length).toBeGreaterThan(0);
+      expect(bracketMatcherbindings.length).toBeGreaterThan(0);
+      atom.config.set('disable-keybindings.bundledPackages', ['go-to-line']);
+
+      waitsForPromise(() => activationPromise);
+
+      return runs(function () {
+        disableKeybindings.init();
+        goToLinebindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'go-to-line'));
+        bracketMatcherbindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'bracket-matcher'));
+        expect(goToLinebindings.length).toBe(0);
+        expect(bracketMatcherbindings.length).toBeGreaterThan(0);
+        expect(atom.config.get('core.packagesWithKeymapsDisabled')).toEqual(['go-to-line']);
+        
+        disableKeybindings.reload();
+        goToLinebindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'go-to-line'));
+        bracketMatcherbindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'bracket-matcher'));
+        expect(goToLinebindings.length).toBe(0);
+        expect(bracketMatcherbindings.length).toBeGreaterThan(0);
+        expect(atom.config.get('core.packagesWithKeymapsDisabled')).toEqual(['go-to-line']);
+      });
+    });
+  });
+
   return describe("activate", function () {
     it("bundledPackages", function () {
       let goToLinebindings = atom.keymaps.getKeyBindings().filter(packageFilter.bind(null, 'go-to-line'));
